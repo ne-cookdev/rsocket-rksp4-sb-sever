@@ -1,7 +1,6 @@
 package rksp.taskMngrServer.controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,9 +27,9 @@ public class TaskController {
     }
 
     @MessageMapping("tasks.get")
-    public Mono<Task> getTask(String taskId) {
+    public Mono<Task> getTask(Long taskId) {
         System.out.println(taskId);
-        return taskService.getTask(Long.valueOf(taskId));
+        return taskService.getTask(taskId);
     }
 
     @MessageMapping("tasks.update")
